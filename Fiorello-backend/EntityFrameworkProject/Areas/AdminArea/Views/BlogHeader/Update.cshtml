@@ -1,0 +1,58 @@
+﻿@model BlogHeader
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <span class="text-danger">@ViewBag.Message</span>
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-description">
+                            Blog Header
+                        </p>
+
+                        <form asp-controller="BlogHeader" asp-action="Update" class="forms-sample" method="post">
+                            <div class="form-group">
+                                <label asp-for="Header">Title</label>
+
+                                <textarea class="form-control rounded-0" asp-for="Header" id="Header-area" rows="5"></textarea>
+                                <span asp-validation-for="Header" class="text-danger my-1"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HeaderDesc">Description</label>
+                                <textarea class="form-control rounded-0" asp-for="HeaderDesc" id="HeaderDesc-area" rows="5"></textarea>
+                                <span asp-validation-for="HeaderDesc" class="text-danger my-1"></span>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary mr-2">Update</button>
+                            <a asp-controller="BlogHeader" asp-action="Index" class="btn btn-light">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+}
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace("Header-area");
+    CKEDITOR.replace("HeaderDesc-area");
+
+</script>
+
+
+
+
+

@@ -1,0 +1,61 @@
+﻿@model Blog
+@{ ViewData["Title"] = "Update";
+    
+    }
+
+<div class="container">
+    <div class="row my-5">
+        <span class="text-danger">@ViewBag.Message</span>
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h3 text-align:center">Update Blog</h3>
+
+                    <form asp-controller="Blog" asp-action="Update" class="forms-sample" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+
+                            <div>
+                                <label for="exampleInputUsername1">Title</label>
+                                <textarea class="form-control rounded-0" asp-for="Title" id="Title-area" rows="10"></textarea>
+                                <span class="text-danger" asp-validation-for="Title"></span>
+                            </div>
+
+                            <div>
+                                <label for="exampleInputUsername1">Description</label>
+                                <textarea class="form-control rounded-0" asp-for="Desc" id="Desc-area" rows="10"></textarea>
+                                <span class="text-danger" asp-validation-for="Desc"></span>
+                            </div>
+
+                            <div>
+                                <label for="exampleInputUsername1">Date</label>
+                                <input type="date" class="form-control" asp-for="Date">
+                                <span class="text-danger" asp-validation-for="Date"></span>
+                            </div>
+                            <div>
+                                <label for="exampleInputUsername1">Image</label>
+                                <input class="form-control" asp-for="Photo">
+                                <span class="text-danger" asp-validation-for="Photo"></span>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                        <a asp-controller="Blog" asp-action="Index" class="btn btn-light">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("Title-area")
+        CKEDITOR.replace("Desc-area")
+    </script>
+
+}
